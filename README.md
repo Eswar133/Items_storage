@@ -68,6 +68,15 @@ This Django project is designed to manage items with functionalities for user au
      - Query Parameters:
           - sort_by : filed to sort items(default is by name)
           - page : page number for pagination
+     - sample output
+       ```json 
+      Name: smartwatch, Description: A watch with fitness tracking and notifiction features, Price: 1999.00, Created At: 2024-10-22 15:18:04.274620+00:00
+      Name: Bluetooth Speaker, Description: A portable speaker with rich sound and deep bass, Price: 499.00, Created At: 2024-10-22 15:18:27.001584+00:00
+      Name: Camera DSLR, Description: High resolution for professional usage and personal usage, Price: 59999.00, Created At: 2024-10-22 15:18:52.372676+00:00
+      Name: External hard drive, Description: 2 TB external hard drive for storage and backup files, Price: 999.00, Created At: 2024-10-22 15:19:34.088642+00:00
+      Name: Gaming console, Description: Next-gen gaming console with immersive gaming experience, Price: 12999.00, Created At: 2024-10-22 15:20:24.859726+00:00
+      Name: TV(smart), Description: 55-inch 4k smart tv with streaming capabilities, Price: 8999.00, Created At: 2024-10-22 15:20:55.079672+00:00
+      Name: Tablet, Description: A screen with 9 inches better in gaming for kids and learning content, Price: 30000.00, Created At: 2024-10-22 15:21:54.652200+00:00
             
 
 
