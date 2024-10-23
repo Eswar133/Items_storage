@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib import messages
 from django.urls import reverse_lazy
 from .models import Item
 
@@ -31,13 +32,35 @@ class CustomLogoutView(LogoutView):
 def item_list(request):
     items = Item.objects.all()
 
-    # Sorting
-    sort_by = request.GET.get('sort_by', 'name')  # Default sorting by name
+    
+    sort_by = request.GET.get('sort_by', 'name')  # Default 
     items = items.order_by(sort_by)
 
-    # Pagination
-    paginator = Paginator(items, 10)  # Show 10 items per page
+    
+    paginator = Paginator(items, 10)  
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'items/item_list.html', {'page_obj': page_obj, 'sort_by': sort_by})
+
+@login_required
+def add_item(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+
+        
+        if not name or not price:
+            messages.error(request, 'Name and Price are required.')
+        else:
+            try:
+                price = float(price)
+                item = Item.objects.create(name=name, description=description, price=price)
+                item.save()
+                messages.success(request, 'Item added successfully!')
+                return redirect('item_list')
+            except ValueError:
+                messages.error(request, 'Invalid price format.')
+    
+    return render(request, 'items/add_item.html')

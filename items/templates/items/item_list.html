@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Items List</title>
-    <!-- Tailwind CSS CDN -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Bootstrap CSS CDN -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/0BS2Zl7Pv5Yr2L/A01EzNRbZlpzrFNn71EiwHD" crossorigin="anonymous">
     <style>
         .pagination a {
@@ -19,13 +19,17 @@
 </head>
 <body class="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 text-white">
 
-    <!-- Navbar -->
+    
     <nav class="bg-gray-900 py-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-teal-400">Items List</h1>
             <div class="flex items-center space-x-4">
                 <span class="text-gray-300">Welcome, <span class="text-teal-300">{{ user.username }}</span>!</span>
-                <!-- Logout form in navbar -->
+                
+                <a href="{% url 'add_item' %}" class="btn btn-success bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300">
+                    Add New Item
+                </a>
+                
                 <form method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-teal bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors duration-300 px-4 py-2">
@@ -38,7 +42,7 @@
 
     <div class="container mx-auto p-8 bg-gray-900 rounded-lg shadow-lg max-w-4xl mt-8">
         
-        <!-- Sort by form -->
+        
         <form method="get" class="mb-6 flex items-center justify-between">
             <div>
                 <label for="sort_by" class="text-gray-300">Sort by:</label>
@@ -48,13 +52,13 @@
                     <option value="created_at" {% if sort_by == 'created_at' %}selected{% endif %}>Created At</option>
                 </select>
             </div>
-            <!-- Clear button -->
+            
             <a href="{% url 'item_list' %}" class="btn btn-danger bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-300">
                 Clear Filters
             </a>
         </form>
 
-        <!-- Items list -->
+        
         <ul class="space-y-4">
             {% for item in page_obj %}
                 <li class="bg-gray-800 p-4 rounded-md shadow-md">
@@ -68,7 +72,7 @@
             {% endfor %}
         </ul>
 
-        <!-- Pagination -->
+        
         <div class="pagination mt-8">
             <span class="step-links">
                 {% if page_obj.has_previous %}
@@ -88,7 +92,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS CDN (Optional for interactivity) -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
