@@ -69,7 +69,7 @@ This Django project is designed to manage items with functionalities for user au
           - sort_by : filed to sort items(default is by name)
           - page : page number for pagination
      - sample output
-       ```json 
+  
       Name: smartwatch, Description: A watch with fitness tracking and notifiction features, Price: 1999.00, Created At: 2024-10-22 15:18:04.274620+00:00
       Name: Bluetooth Speaker, Description: A portable speaker with rich sound and deep bass, Price: 499.00, Created At: 2024-10-22 15:18:27.001584+00:00
       Name: Camera DSLR, Description: High resolution for professional usage and personal usage, Price: 59999.00, Created At: 2024-10-22 15:18:52.372676+00:00
